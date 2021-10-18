@@ -1,5 +1,3 @@
-## Issues:
-
 ## Vault inside kubernetes
 
 You can spawn a kind cluster as a demo as follows:
