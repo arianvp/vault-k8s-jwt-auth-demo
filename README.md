@@ -33,12 +33,13 @@ Then we can configure vault to use the APIServer's OIDC configuration:
 vault auth enable jwt
 ```
 
-Set up vault to discover
+Set up vault to discover the issuer JWK from the kube apiserver using the discovery URI
 ```
 vault write auth/jwt/config \
   oidc_discovery_url=https://kubernetes.default.svc.cluster.local \
   oidc_discovery_ca_pem=@/run/secrets/kubernetes.io/serviceaccount/ca.crt
 ```
+
 
 Lets assign the default kubernetes service account to the default vault role.
 Gives access to cubbyhole and nothing else:
