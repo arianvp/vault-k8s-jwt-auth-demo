@@ -109,6 +109,21 @@ However there is an issue that it keeps spamming trying to delete the JWT from d
 vautl-agents tries to delete the JWT when consuming it https://github.com/hashicorp/vault/pull/11969  whilst kubernetes keeps the JWT as read-only and writes a new copy to it every time the token expires. Vault-agent doesn't seem to handle that scenario yet properly.
 
 
+```
+$ kubectl apply -f manifests/nginx.yaml
+$ kubectl logs -lapp=nginx -c vault-agent
+2021-10-18T12:08:01.496Z [ERROR] auth.jwt: error removing jwt file: error="remove /var/run/secrets/vault.hashicorp.com/serviceaccount/token: read-only file system"
+2021-10-18T12:08:01.995Z [ERROR] auth.jwt: error removing jwt file: error="remove /var/run/secrets/vault.hashicorp.com/serviceaccount/token: read-only file system"
+2021-10-18T12:08:02.496Z [ERROR] auth.jwt: error removing jwt file: error="remove /var/run/secrets/vault.hashicorp.com/serviceaccount/token: read-only file system"
+2021-10-18T12:08:02.995Z [ERROR] auth.jwt: error removing jwt file: error="remove /var/run/secrets/vault.hashicorp.com/serviceaccount/token: read-only file system"
+2021-10-18T12:08:03.496Z [ERROR] auth.jwt: error removing jwt file: error="remove /var/run/secrets/vault.hashicorp.com/serviceaccount/token: read-only file system"
+2021-10-18T12:08:03.995Z [ERROR] auth.jwt: error removing jwt file: error="remove /var/run/secrets/vault.hashicorp.com/serviceaccount/token: read-only file system"
+2021-10-18T12:08:04.495Z [ERROR] auth.jwt: error removing jwt file: error="remove /var/run/secrets/vault.hashicorp.com/serviceaccount/token: read-only file system"
+2021-10-18T12:08:04.995Z [ERROR] auth.jwt: error removing jwt file: error="remove /var/run/secrets/vault.hashicorp.com/serviceaccount/token: read-only file system"
+2021-10-18T12:08:05.495Z [ERROR] auth.jwt: error removing jwt file: error="remove /var/run/secrets/vault.hashicorp.com/serviceaccount/token: read-only file system"
+2021-10-18T12:08:05.996Z [ERROR] auth.jwt: error removing jwt file: error="remove /var/run/secrets/vault.hashicorp.com/serviceaccount/token: read-only file system"
+```
+
 ```yaml
 # manifests/nginx.yaml
 ---
