@@ -2,7 +2,7 @@
 
 You can spawn a kind cluster as a demo as follows:
 ```
-kind create cluster --config ./01-kind.yml
+kind create cluster --config ./kind/01-kind.yml
 ```
 
 Allow OIDC discovery without authentication as per https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#service-account-issuer-discovery
