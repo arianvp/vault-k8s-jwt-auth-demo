@@ -24,6 +24,8 @@ spec:
         vault.hashicorp.com/role: "default"
     spec:
       volumes:
+        # Create a token for the default service account with vault as an audience.
+        # Note that this matches up with the audience parameter in the jwt auth role config
         - name: vault-token
           projected:
             sources:
