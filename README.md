@@ -124,6 +124,12 @@ $ kubectl logs -lapp=nginx -c vault-agent
 2021-10-18T12:08:05.996Z [ERROR] auth.jwt: error removing jwt file: error="remove /var/run/secrets/vault.hashicorp.com/serviceaccount/token: read-only file system"
 ```
 
+and the token is indeed injected:
+```
+kubectl exec -ti nginx-6c7f8d5795-wt4bv -c nginx -- cat /vault/secrets/token
+s.o3dT1iQiJPLc9BSuiEEo8WkZ
+```
+
 ```yaml
 # manifests/nginx.yaml
 ---
