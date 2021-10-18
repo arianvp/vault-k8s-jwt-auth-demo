@@ -69,9 +69,9 @@ vault server -dev
 Then you can configure vault as follows:
 
 ```
-APISERVER_URL=https://127.0.0.1:6443 # or your external url
+EXTERNALAPISERVER_URL=https://127.0.0.1:6443 # or your external url
 vault write auth/jwt/config \
-  oidc_discovery_url=$APISERVER_URL \
+  oidc_discovery_url=$EXTERNAL_APISERVER_URL \
   oidc_discovery_ca_pem=$(kubectl get configmap kube-root-ca.crt -ojsonpath="{.data['ca\.crt']}")
 ```
 
